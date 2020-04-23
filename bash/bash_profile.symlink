@@ -1,5 +1,5 @@
-source ./git-completion.sh
-source ./git-prompt.sh
+source git-completion.sh
+source git-prompt.sh
 
 function prev_func_err {
     if [[ $? -ne 0 ]]; then
