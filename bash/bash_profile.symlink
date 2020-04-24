@@ -1,5 +1,8 @@
-source ./git-completion.sh
-source ./git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+
+. .git-completion.sh
+. .git-prompt.sh
 
 function prev_func_err {
     if [[ $? -ne 0 ]]; then
@@ -7,4 +10,5 @@ function prev_func_err {
     fi
 }
 
-PS1="$(prev_func_err) [\u@\h \W$(__git_ps1 " (%s)")]\$ "
+#PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+PS1='$(prev_func_err) [\u:$PWD]$(__git_ps1 " [\[\e[0;32m\]%s\[\e[0m\]]")\$ '
